@@ -1,8 +1,9 @@
 const path = require('path')
 const fs = require('fs')
 const solc = require('solc')
-const inboxContractPath = path.resolve(__dirname, 'contracts', 'Inbox.sol')
-const sourceCode = fs.readFileSync(inboxContractPath, 'utf8')
+const contractName = 'Loterry'
+const contractPath = path.resolve(__dirname, 'contracts', `${contractName}.sol`)
+const sourceCode = fs.readFileSync(contractPath, 'utf8')
 
 var solcInput = {
 	language: "Solidity",
@@ -40,6 +41,6 @@ var solcInput = {
 solcInput = JSON.stringify(solcInput)
 
 var contractObject = solc.compile(solcInput)
-contractObject = JSON.parse(contractObject)
-module.exports = contractObject.contracts['contract']['Inbox']
 // console.log(contractObject)
+contractObject = JSON.parse(contractObject)
+module.exports = contractObject.contracts['contract'][contractName]
