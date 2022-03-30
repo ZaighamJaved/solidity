@@ -20,7 +20,7 @@ contract Lottery {
 
     function register() public payable {
         require(
-            msg.value == 1 ether,
+            msg.value == 0.1 ether,
             "Participation amount should be 0.1 ethers"
         );
         participants.push(payable(msg.sender));
